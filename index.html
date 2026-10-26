@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#163c36">
+  <title>Strand GPS Tester</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header><span class="eyebrow">FIELD TEST • VERSION 1</span><h1>Strand GPS Tester</h1><p>Check how accurately your phone locates you near the office. Results stay on this device.</p></header>
+    <section class="panel" aria-labelledby="office-title">
+      <h2 id="office-title">Office reference point</h2>
+      <p class="hint">Enter your office's latitude and longitude from Google Maps, or capture your current position while physically at the office. Capturing once does not establish a verified office coordinate.</p>
+      <div class="two"><label>Office latitude<input id="officeLat" type="number" step="any" min="-90" max="90" placeholder="e.g. 14.000000"></label><label>Office longitude<input id="officeLon" type="number" step="any" min="-180" max="180" placeholder="e.g. 121.000000"></label></div>
+      <label>Geofence radius (meters)<input id="radius" type="number" min="10" max="5000" step="10" value="100"></label>
+      <button id="saveOffice" class="secondary">Save office point on this device</button>
+      <button id="useCurrent" class="secondary">Use current location as office point</button>
+    </section>
+    <section class="panel" aria-labelledby="reading-title">
+      <h2 id="reading-title">Live reading</h2>
+      <p id="status" class="status" role="status" aria-live="polite">Ready to test. Allow location access when prompted.</p>
+      <div class="stats"><div><small>Latitude</small><strong id="lat">—</strong></div><div><small>Longitude</small><strong id="lon">—</strong></div><div><small>Reported accuracy</small><strong id="accuracy">—</strong></div><div><small>Office distance</small><strong id="distance">—</strong></div></div>
+      <p class="hint">Distance is measured from the configured office point. Accuracy is the phone/browser's estimate, not a guarantee.</p>
+      <button id="test">Test GPS now</button>
+      <p class="hint">A reading inside the radius is not proof of physical presence. Spoofed coordinates and indoor inaccuracies remain possible.</p>
+    </section>
+    <section class="panel" aria-labelledby="history-title">
+      <div class="section-head"><h2 id="history-title">Session measurements</h2><button id="clear" class="text-button">Clear</button></div>
+      <p class="hint">Measurements are stored in memory only and disappear when you reload the page.</p>
+      <div class="table-wrap"><table><thead><tr><th>Time</th><th>Accuracy</th><th>Distance</th><th>Assessment</th></tr></thead><tbody id="history"><tr><td colspan="4">No measurements yet.</td></tr></tbody></table></div>
+    </section>
+    <footer>Prototype for feasibility testing only • Not an attendance or payroll record</footer>
+  </main>
+</body>
+</html>
